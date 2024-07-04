@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Square Root Bisection</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Square Root Bisection Calculator</h1>
+      <form method="POST" action="/">
+        <label for="square_target">Number:</label>
+        <input
+          type="number"
+          step="any"
+          id="square_target"
+          name="square_target"
+          required
+        />
+
+        <label for="tolerance">Tolerance (default 1e-7):</label>
+        <input type="number" step="any" id="tolerance" name="tolerance" />
+
+        <label for="max_iterations">Max Iterations (default 100):</label>
+        <input type="number" id="max_iterations" name="max_iterations" />
+
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %} {% endif %} {% endwith %}
+      </div>
+    </div>
+  </body>
+</html>
